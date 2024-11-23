@@ -1,0 +1,21 @@
+div{
+    margins: 0px; font-family: 標楷體; 
+}
+#header{
+    font-size: 22px;
+    font-weight: bold;
+    color: brown;
+    background-color: #faf9cf;
+}
+#main{
+    border-width: thick;
+    font-size: 22px;
+    color: #1f130c;
+    background-color: #fffc8a;
+}
+#footer{
+    height: 24px;
+    font-size: 18px;
+    color: #1c0b00;
+    background-color: #d9d504;
+}

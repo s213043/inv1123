@@ -1,0 +1,66 @@
+<!--定期定額投資網頁 webapp-fpfam.html-->
+<!doctype html>
+<html>
+<head>
+  <title>定期定額投資</title>
+  <meta charset="utf-8">
+  <script>
+  function mycal(){
+    // p=document.getElementById("p1");
+    mv=parseInt(document.getElementById("mv").value);
+    // p.innerHTML+="<br>"+ mv;
+    yrs=parseInt(document.getElementById("yrs").value);
+    // p.innerHTML+="<br>"+ yrs;
+    n=yrs*12
+    // p.innerHTML+="<br>"+ n;
+    rr=parseFloat(document.getElementById("rr").value/100)/12;
+    // p.innerHTML+="<br>"+ rr;
+    // b_rr= "1+月化投資報酬率= " + (1+rr);
+    // p.innerHTML+="<br>"+b_rr;
+    // p2=document.getElementById("p2");
+    sum_rr=0.0;
+    xp= new Array(), yp= new Array();
+    for (i=1; i<=n; i++){
+        sum_rr=sum_rr+Math.pow(1+rr,i);
+        // p2.innerHTML+= " i= "+i
+        //              + " sr="+sum_rr+"<BR> "
+        xp.push(i), yp.push(mv*sum_rr);             
+    }
+    fv= mv*sum_rr;
+    // p2.innerHTML+= "= " + parseInt(fv).toLocaleString();
+    R=document.getElementById("fv");
+    R.value=parseInt(fv).toLocaleString();
+    
+    const data = [{x:xp, y:yp, mode:"lines"}];
+    const layout = {title: "y = " + "定期定額投資報酬(期末本利和)"};
+    Plotly.newPlot("myPlot", data, layout);
+  }
+  </script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/mystyles.css">
+</head>
+<body>
+  <div id=header><h3>響應式網站設計：理財WebAPP</h3>
+    <hr style="border-width: 2px;"><br>
+  </div>
+  <div id=main><br>
+    <h3>定期定額投資網頁程式</h3>
+    <label>每月投入金額:</label>
+    <input id="mv" placeholder="單筆投入多少元" type="text" /><br>
+    <label>預估投資年數:</label></th>
+    <input id="yrs" placeholder="預估投資年數" type="text" /><br>
+    <label>年化投資報酬率:</label>
+    <input id="rr" placeholder="年化報酬率多少‰" type="text" /><br><br>
+    <input type="button" id="cal" onclick="mycal()" value="計算" /><br><br>
+    <label>期末本利和:</label>
+    <input type=label id="fv" ><br><br>
+    <div id="myPlot" style="height:300px;max-width:400px;border:1px solid;background-color:#faf9cf;"></div>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <hr style="border-width: 3px;"><br>
+  </div>
+  <div id=footer>正修科技大學資工系協同中山工商電子科指導學生專題製作</div>
+  <a href="index.html"><img src="images/gohome.png" height="50px"></a>
+</body>
+</html>
+

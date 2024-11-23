@@ -1,0 +1,49 @@
+<!--單筆投資網頁 webapp-single.html-->
+<!doctype html>
+<html>
+<head>
+  <title>單筆投資</title>
+  <meta charset="utf-8">
+  <script>
+  function mycal(){
+    //p=document.getElementById("p1");
+    mny=parseInt(document.getElementById("mny").value);
+    //p.innerHTML+="<br>"+ mny;
+    yrs=parseInt(document.getElementById("yrs").value);
+    //p.innerHTML+="<br>"+ yrs;
+    rr=parseFloat(document.getElementById("rr").value/100);
+    //p.innerHTML+="<br>"+ rr;
+    Tmny= mny+yrs+rr;
+    //p.innerHTML+="<br>"+Tmny;
+    Tmny = mny*Math.pow(1+rr,yrs);
+    //p2=document.getElementById("p2");
+    //p2.innerHTML=parseInt(Tmny).toLocaleString();
+    R=document.getElementById("Tmny");
+    R.value=parseInt(Tmny).toLocaleString();
+  }
+  </script>
+  <link rel="stylesheet" type="text/css" href="css/mystyles.css">
+</head>
+<body>
+  <div id=header><h3>響應式網站設計：理財WebAPP</h3>
+    <hr style="border-width: 2px;"><br>
+  </div>
+  <div id=main><br>
+    <h3>單筆投資網頁程式</h3>
+    <label>單筆投入金額:</label>
+    <input id="mny" placeholder="單筆投入多少元" type="text" /><br>
+    <label>預估投資年數:</label></th>
+    <input id="yrs" placeholder="預估投資年數" type="text" /><br>
+    <label>年化投資報酬率:</label>
+    <input id="rr" placeholder="年化報酬率多少‰" type="text" /><br><br>
+    <input type="button" id="cal" onclick="mycal()" value="計算" /><br><br>
+    <label>期末總本金</label>
+    <input type=label id="Tmny" >
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <hr style="border-width: 3px;"><br>
+  </div>
+  <div id=footer>正修科技大學資工系協同中山工商電子科指導學生專題製作</div>
+  <a href="index.html"><img src="images/gohome.png" height="50px"></a>
+</body>
+</html>
